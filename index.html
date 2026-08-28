@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Um abraço pra você, Thiago 🤍</title>
+<meta name="description" content="Uma parede de abraços pro Thiago. Porque todo mundo precisa de um de vez em quando.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Um abraço pra você, Thiago 🤍">
+<meta property="og:description" content="Porque todo mundo precisa de um abraço de vez em quando.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF7EF;
+    --peach:#FFE3D0;
+    --rose:#FFC9C9;
+    --coral:#F0836B;
+    --coral-deep:#D9583C;
+    --plum:#7A4B5A;
+    --ink:#4A3B36;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 800px at 15% -10%, #FFE9DA 0%, transparent 55%),
+      radial-gradient(1000px 700px at 100% 0%, #FFD7D7 0%, transparent 50%),
+      radial-gradient(1200px 900px at 50% 120%, #FFE7D2 0%, transparent 60%),
+      var(--cream);
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    text-align:center;
+    padding:clamp(48px,9vw,110px) 22px clamp(28px,5vw,54px);
+    position:relative;
+  }
+  .kicker{
+    font-weight:700;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-size:clamp(11px,2.4vw,14px);
+    color:var(--coral-deep);
+    opacity:.85;
+    margin-bottom:18px;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    line-height:1.02;
+    font-size:clamp(38px,8.4vw,104px);
+    letter-spacing:-.02em;
+    background:linear-gradient(135deg, var(--coral-deep) 0%, var(--coral) 45%, var(--plum) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    text-wrap:balance;
+    max-width:14ch;
+    margin:0 auto;
+  }
+  h1 .name{ display:block; font-size:1.18em; }
+  .sub{
+    margin:clamp(18px,3vw,28px) auto 0;
+    max-width:34ch;
+    font-size:clamp(16px,2.6vw,21px);
+    color:var(--plum);
+    line-height:1.5;
+    text-wrap:balance;
+  }
+  .scroll-hint{
+    margin-top:clamp(26px,4vw,40px);
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    font-weight:700;
+    color:var(--coral-deep);
+    font-size:15px;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+  /* floating hearts */
+  .heart{position:fixed;bottom:-40px;font-size:22px;pointer-events:none;opacity:0;animation:rise linear infinite;z-index:0}
+  @keyframes rise{
+    0%{transform:translateY(0) rotate(0);opacity:0}
+    10%{opacity:.55}
+    90%{opacity:.35}
+    100%{transform:translateY(-115vh) rotate(40deg);opacity:0}
+  }
+
+  /* ---------- WALL ---------- */
+  .wall{
+    position:relative;
+    z-index:1;
+    max-width:1400px;
+    margin:0 auto;
+    padding:8px clamp(12px,3vw,28px) 40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(155px,1fr));
+    gap:clamp(10px,1.6vw,18px);
+  }
+  @media(min-width:700px){ .wall{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))} }
+  .card{
+    position:relative;
+    aspect-ratio:9/16;
+    border-radius:20px;
+    overflow:hidden;
+    background:var(--peach);
+    box-shadow:0 10px 26px -12px rgba(120,60,50,.35);
+    transform:translateY(24px);
+    opacity:0;
+    transition:transform .7s cubic-bezier(.2,.7,.2,1), opacity .7s, box-shadow .3s;
+  }
+  .card.in{transform:translateY(0);opacity:1}
+  .card:hover{box-shadow:0 18px 40px -14px rgba(120,60,50,.5)}
+  .card video{
+    width:100%;height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .6s ease;
+  }
+  .card:hover video{transform:scale(1.05)}
+  .card::after{
+    content:"";
+    position:absolute;inset:0;
+    border:1.5px solid rgba(255,255,255,.35);
+    border-radius:20px;
+    pointer-events:none;
+  }
+  /* tiny heart badge that pops occasionally */
+  .card .pop{
+    position:absolute;top:10px;right:11px;
+    font-size:16px;
+    filter:drop-shadow(0 1px 2px rgba(0,0,0,.25));
+    opacity:0;transform:scale(.6);
+    transition:opacity .3s, transform .3s;
+  }
+  .card:hover .pop{opacity:1;transform:scale(1)}
+
+  /* ---------- OUTRO ---------- */
+  .outro{
+    text-align:center;
+    padding:clamp(40px,7vw,90px) 22px clamp(60px,9vw,120px);
+    position:relative;z-index:1;
+  }
+  .outro .big{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(24px,4.6vw,44px);
+    color:var(--plum);
+    line-height:1.2;
+    max-width:20ch;
+    margin:0 auto;
+    text-wrap:balance;
+  }
+  .outro .small{
+    margin-top:18px;
+    color:var(--coral-deep);
+    font-weight:700;
+    font-size:15px;
+    opacity:.8;
+  }
+  .sig{margin-top:30px;font-size:26px}
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="kicker">um recado do seu amigo</div>
+    <h1>Um abraço<br>pra você<span class="name">Thiago</span></h1>
+    <p class="sub">Porque todo mundo precisa de um abraço de vez em quando. Aqui vão vários — role a tela e escolhe o seu. 🤍</p>
+    <div class="scroll-hint">os abraços estão logo aqui embaixo ↓</div>
+  </header>
+
+  <main class="wall" id="wall"></main>
+
+  <footer class="outro">
+    <p class="big">Você não está sozinho. Tem gente que te quer bem, e esse abraço é de verdade.</p>
+    <p class="small">— com carinho, do seu amigo</p>
+    <div class="sig">🫂</div>
+  </footer>
+
+<script>
+  // Curadoria de vídeos de abraço (Pexels, uso livre)
+  const VIDS = [
+    7351683,4800444,6524289,7059112,6308551,4801939,6570509,8971302,
+    3704107,6314618,8343989,5932316,7477173,8524155,8774188,8050786,
+    7314148,4800620,6522540,6559929,6307679,8343576,9479422,7251362
+  ];
+  // monta as URLs no padrão do Pexels
+  function poster(id){return `https://images.pexels.com/videos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=900&w=506`;}
+  const SRC = {
+    7351683:"7351683-sd_338_640_30fps",4800444:"4800444-sd_360_640_24fps",6524289:"6524289-sd_360_640_24fps",
+    7059112:"7059112-sd_360_640_24fps",6308551:"6308551-sd_360_640_24fps",4801939:"4801939-sd_360_640_24fps",
+    6570509:"6570509-sd_360_640_25fps",8971302:"8971302-sd_360_640_25fps",3704107:"3704107-sd_338_640_25fps",
+    6314618:"6314618-sd_360_640_24fps",8343989:"8343989-sd_360_640_25fps",5932316:"5932316-sd_338_640_25fps",
+    7477173:"7477173-sd_360_640_24fps",8524155:"8524155-sd_360_640_25fps",8774188:"8774188-sd_360_640_25fps",
+    8050786:"8050786-sd_360_640_25fps",7314148:"7314148-sd_360_640_25fps",4800620:"4800620-sd_360_640_24fps",
+    6522540:"6522540-sd_360_640_24fps",6559929:"6559929-sd_338_640_25fps",6307679:"6307679-sd_360_640_24fps",
+    8343576:"8343576-sd_360_640_25fps",9479422:"9479422-sd_338_640_25fps",7251362:"7251362-sd_360_640_25fps"
+  };
+  function vsrc(id){return `https://videos.pexels.com/video-files/${id}/${SRC[id]}.mp4`;}
+
+  const wall = document.getElementById('wall');
+  VIDS.forEach(id=>{
+    const c=document.createElement('div'); c.className='card';
+    const v=document.createElement('video');
+    v.muted=true; v.loop=true; v.playsInline=true; v.setAttribute('playsinline','');
+    v.preload='none'; v.poster=poster(id);
+    v.dataset.src=vsrc(id);
+    c.appendChild(v);
+    const p=document.createElement('span'); p.className='pop'; p.textContent='🤍'; c.appendChild(p);
+    wall.appendChild(c);
+  });
+
+  // entrada suave
+  const reveal=new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); reveal.unobserve(e.target);} });
+  },{threshold:.15});
+  document.querySelectorAll('.card').forEach((c,i)=>{ setTimeout(()=>reveal.observe(c), i*40); });
+
+  // só toca o que está visível (economia + performance)
+  const play=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      const v=e.target;
+      if(e.isIntersecting){
+        if(!v.src) v.src=v.dataset.src;
+        v.play().catch(()=>{});
+      } else { v.pause(); }
+    });
+  },{threshold:.35});
+  document.querySelectorAll('.card video').forEach(v=>play.observe(v));
+
+  // coraçõezinhos subindo
+  const EM=['🤍','💛','🩷','🧡','🫂'];
+  function spawnHeart(){
+    const h=document.createElement('div'); h.className='heart';
+    h.textContent=EM[Math.floor(Math.random()*EM.length)];
+    h.style.left=(Math.random()*100)+'vw';
+    const dur=7+Math.random()*7; h.style.animationDuration=dur+'s';
+    h.style.fontSize=(16+Math.random()*20)+'px';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(), dur*1000+200);
+  }
+  setInterval(spawnHeart, 1400);
+</script>
+</body>
+</html>
