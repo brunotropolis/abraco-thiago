@@ -187,27 +187,19 @@
   </footer>
 
 <script>
-  // Curadoria de vídeos de abraço (Pexels, uso livre)
+  // Curadoria de vídeos de abraço — crianças, homens/amigos, pai-filho, avô-neto,
+  // jogadores comemorando e criança+cachorro (castados 1 a 1 pelo Gemini; nada de casal/romance).
+  // Fonte: Pexels (uso livre), hospedados localmente e comprimidos.
   const VIDS = [
-    7351683,4800444,6524289,7059112,6308551,4801939,6570509,8971302,
-    3704107,6314618,8343989,5932316,7477173,8524155,8774188,8050786,
-    7314148,4800620,6522540,6559929,6307679,8343576,9479422,7251362
+    10602047,32172401,6952519,7150142,7150153,8498301,8901485,9654779,9654780,
+    4801939,6307679,7251362,7251365,6077724,31326302,
+    8308938,9096851,8918152,6565090,12769513,9427307,10726237
   ];
-  // monta as URLs no padrão do Pexels
-  function poster(id){return `https://images.pexels.com/videos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=900&w=506`;}
-  const SRC = {
-    7351683:"7351683-sd_338_640_30fps",4800444:"4800444-sd_360_640_24fps",6524289:"6524289-sd_360_640_24fps",
-    7059112:"7059112-sd_360_640_24fps",6308551:"6308551-sd_360_640_24fps",4801939:"4801939-sd_360_640_24fps",
-    6570509:"6570509-sd_360_640_25fps",8971302:"8971302-sd_360_640_25fps",3704107:"3704107-sd_338_640_25fps",
-    6314618:"6314618-sd_360_640_24fps",8343989:"8343989-sd_360_640_25fps",5932316:"5932316-sd_338_640_25fps",
-    7477173:"7477173-sd_360_640_24fps",8524155:"8524155-sd_360_640_25fps",8774188:"8774188-sd_360_640_25fps",
-    8050786:"8050786-sd_360_640_25fps",7314148:"7314148-sd_360_640_25fps",4800620:"4800620-sd_360_640_24fps",
-    6522540:"6522540-sd_360_640_24fps",6559929:"6559929-sd_338_640_25fps",6307679:"6307679-sd_360_640_24fps",
-    8343576:"8343576-sd_360_640_25fps",9479422:"9479422-sd_338_640_25fps",7251362:"7251362-sd_360_640_25fps"
-  };
-  function vsrc(id){return `https://videos.pexels.com/video-files/${id}/${SRC[id]}.mp4`;}
+  function poster(id){return `assets/clips/${id}.jpg`;}
+  function vsrc(id){return `assets/clips/${id}.mp4`;}
 
   const wall = document.getElementById('wall');
+  for(let i=VIDS.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[VIDS[i],VIDS[j]]=[VIDS[j],VIDS[i]];}
   VIDS.forEach(id=>{
     const c=document.createElement('div'); c.className='card';
     const v=document.createElement('video');
